@@ -1,0 +1,39 @@
+.side:hover {
+  background-color: #ebebeb;
+}
+
+.side {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  height: 80px;
+  border-bottom: 1px solid lightgray;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.hhh {
+  font-size: 20px;
+  margin-left: 20px;
+}
+.create {
+  border-bottom: 1px solid lightgray;
+  height: 80px;
+}
+.hh1 {
+  padding-top: 20px;
+  padding-left: 0;
+}
+.create:hover {
+  background-color: #ebebeb;
+  cursor: pointer;
+}
+.ppp {
+  font-size: 12px;
+  margin-left: 20px;
+}
+* {
+  font-family: "Raleway", sans-serif;
+}
