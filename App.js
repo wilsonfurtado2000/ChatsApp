@@ -1,39 +1,40 @@
-import React,{useState} from 'react';
-import './App.css';
-import Sidebar from './Sidebar';
-import Chat from './Chat';
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
-import db from './firebase';
-import Login from './Login';
-import {useStateValue} from './StateProvider';
-function App() {
-  const [{user},dispatch] = useStateValue();
-  
-
+import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import { createStackNavigator } from '@react-navigation/stack';
+import Home from './screens/Home';
+import AddChat from './screens/AddChat';
+import Chats from './screens/Chats';
+const Stack = createStackNavigator();
+const globalScreenOptions = {
+  headerStyle:{backgroundColor:"#2C6BED"},
+  headerTitleStyle:{color:"white"},
+  headerTintColor:"white",
+}
+export default function App() {
   return (
-    <div className="App">
-    {!user ? (
-      <Login />
-    ):(
-      <div className="app_body">
-    <Router>
-    <Sidebar />
-      <Switch>
-      
-    <Route  path="/rooms/:roomId">
+    <NavigationContainer >
+    <Stack.Navigator initialRouteName="Home" screenOptions = {globalScreenOptions} >
+    <Stack.Screen  name="Login" component={LoginScreen} />
+    <Stack.Screen name="Register" component={RegisterScreen} />
+    <Stack.Screen name="Home" component={Home} />
+    <Stack.Screen name="AddChat" component={AddChat} />
+    <Stack.Screen name="Chats" component={Chats} />
+    </Stack.Navigator>
+  </NavigationContainer>
    
-      <Chat />
-      </Route>
-      <Route path="/">
-        <Chat />
-      </Route>
-      </Switch>
-  </Router>
-      </div>
-    )}
-
- </div>  
   );
 }
 
-export default App;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
